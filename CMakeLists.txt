@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(src)
 
-file(GLOB SOURCE_FILES src/*.cpp src/core/*.cpp src/core/desktop/*.cpp)
+file(GLOB SOURCE_FILES src/*.cpp src/game/*.cpp src/core/*.cpp src/core/desktop/*.cpp)
 
 if(APPLE)
     find_package(SDL2 REQUIRED)

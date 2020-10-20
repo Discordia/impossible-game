@@ -26,7 +26,7 @@ public:
     Renderer(shared_ptr<StreamFactory> streamFactory, vector<shared_ptr<RenderChunk>>& renderQueue);
     ~Renderer() = default;
 
-    void init(int32_t width, int32_t height);
+    void init();
     void beginFrame();
     void drawFrame();
     void endFrame();
