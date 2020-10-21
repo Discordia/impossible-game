@@ -1,29 +1,29 @@
 #pragma once
 
 #include <vector>
-#include "GameConfig.h"
 #include <core/desktop/BGFXWindow.h>
 #include <core/desktop/InputHandler.h>
-#include <core/Camera.h>
 #include <core/Renderer.h>
+#include <game/GameConfig.h>
+#include <game/GameFactory.h>
+#include <game/EntitySystem.h>
 
 class RenderChunk;
 
-using std::unique_ptr;
-using std::shared_ptr;
-using std::string;
-using std::vector;
-
-
 class Game {
 public:
-    Game(const GameConfig& config);
+    Game(const GameConfig& config, std::unique_ptr<GameFactory> game);
     int run();
 
 private:
-    BGFXWindow window;
-    InputHandler inputHandler;
-    Camera camera;
-    unique_ptr<Renderer> renderer;
-    vector<shared_ptr<RenderChunk>> renderQueue;
+    GameConfig config;
+
+    std::unique_ptr<GameFactory> gameFactory;
+    std::unique_ptr<BGFXWindow> window;
+    std::unique_ptr<InputHandler> inputHandler;
+
+    std::shared_ptr<RenderQueue> renderQueue;
+    std::unique_ptr<Renderer> renderer;
+
+    std::shared_ptr<EntitySystem> entitySystem;
 };

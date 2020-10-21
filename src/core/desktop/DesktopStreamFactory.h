@@ -1,22 +1,21 @@
 #pragma once
 
 #include <core/StreamFactory.h>
-#include "FileStream.h"
+#include <core/desktop/FileStream.h>
 
 class DesktopStreamFactory : public StreamFactory
 {
 public:
 
-    DesktopStreamFactory(const string& directoryName)
-        : directoryName(directoryName) {}
+    explicit DesktopStreamFactory(std::string  directoryName)
+        : directoryName(std::move(directoryName)) {}
 
-    unique_ptr<Stream> open(const string& fileName) override;
+    std::unique_ptr<Stream> open(const std::string& fileName) override;
 
 private:
-    string directoryName;
+    std::string directoryName;
 };
 
-unique_ptr<Stream> DesktopStreamFactory::open(const string& fileName)
-{
-    return unique_ptr<Stream>(new FileStream(directoryName + "/" + fileName));
+std::unique_ptr<Stream> DesktopStreamFactory::open(const std::string& fileName) {
+    return std::unique_ptr<Stream>(new FileStream(directoryName + "/" + fileName));
 }

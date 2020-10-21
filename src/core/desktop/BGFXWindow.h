@@ -10,13 +10,11 @@
 
 #include <core/Logger.h>
 
-using std::string;
-
 static const Logger LOGGER = Logger::create("BGFXWindow");
 
 class BGFXWindow {
 public:
-    BGFXWindow(const string& title, int32_t width, int32_t height)
+    BGFXWindow(const std::string& title, int32_t width, int32_t height)
         : width(width), height(height) {
         if(SDL_Init( SDL_INIT_VIDEO ) < 0) {
             LOGGER.logf(LOG_ERROR, "Failed to init SDL Video, SDL_Error: %s", SDL_GetError());

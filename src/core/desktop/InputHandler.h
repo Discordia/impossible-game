@@ -16,7 +16,7 @@ public:
         }
     }
 
-    bool exitRequested() const {
+    [[nodiscard]] bool exitRequested() const {
         return quit;
     }
 

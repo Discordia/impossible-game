@@ -1,17 +1,14 @@
 #pragma once
 
-#include "Stream.h"
+#include <core/Stream.h>
 #include <string>
 #include <memory>
-
-using std::string;
-using std::unique_ptr;
 
 class StreamFactory
 {
 public:
-    StreamFactory() {}
-    virtual ~StreamFactory() {}
+    StreamFactory() = default;
+    virtual ~StreamFactory() = default;
 
-    virtual unique_ptr<Stream> open(const string& fileName) = 0;
+    virtual std::unique_ptr<Stream> open(const std::string& fileName) = 0;
 };

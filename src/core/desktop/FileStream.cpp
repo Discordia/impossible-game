@@ -1,31 +1,27 @@
-#include "FileStream.h"
+#include <core/desktop/FileStream.h>
 
+using std::string;
 using std::ifstream;
 using std::ios;
 
 FileStream::FileStream(const string& path)
-        : file(path.c_str(), ios::binary), fileSize(0)
-{
-    if (file && file.is_open())
-    {
+        : file(path.c_str(), ios::binary), fileSize(0) {
+    if (file && file.is_open()) {
         file.seekg(0, ios::end);
         this->fileSize = file.tellg();
         file.seekg(0, file.beg);
     }
 }
 
-FileStream::~FileStream()
-{
+FileStream::~FileStream() {
     file.close();
 }
 
-unsigned int FileStream::size() const
-{
+unsigned int FileStream::size() const {
     return fileSize;
 }
 
-int FileStream::read(void* target, const size_t bytes)
-{
+int FileStream::read(void* target, const size_t bytes) {
     file.read((char*) target, bytes);
 
     int readBytes = bytes;

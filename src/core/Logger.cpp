@@ -2,6 +2,8 @@
 #include <cstdarg>
 #include <cstdio>
 
+using std::string;
+
 const string ERROR_PREFIX = string("E/ ");
 const string WARN_PREFIX = string("W/ ");
 const string INFO_PREFIX = string("I/ ");

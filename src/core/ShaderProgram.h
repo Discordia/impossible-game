@@ -4,8 +4,6 @@
 #include <bgfx/bgfx.h>
 #include <fstream>
 
-using std::shared_ptr;
-
 class ShaderProgram {
 public:
     explicit ShaderProgram(bgfx::ProgramHandle programHandle)
@@ -13,10 +11,10 @@ public:
 
     ~ShaderProgram() = default;
 
-    static unique_ptr<ShaderProgram> load(
-            const shared_ptr<StreamFactory>& streamFactory,
-            const string& vertexShaderFile,
-            const string& fragmentShaderFile) {
+    static std::unique_ptr<ShaderProgram> load(
+            const std::shared_ptr<StreamFactory>& streamFactory,
+            const std::string& vertexShaderFile,
+            const std::string& fragmentShaderFile) {
         auto vertexShaderHandle = loadShader(streamFactory, vertexShaderFile);
         auto fragmentShaderHandle = loadShader(streamFactory, fragmentShaderFile);
         return std::make_unique<ShaderProgram>(bgfx::createProgram(vertexShaderHandle, fragmentShaderHandle, true));
@@ -27,7 +25,9 @@ public:
     }
 
 private:
-    static bgfx::ShaderHandle loadShader(const shared_ptr<StreamFactory>& streamFactory, const string& name) {
+    static bgfx::ShaderHandle loadShader(
+            const std::shared_ptr<StreamFactory>& streamFactory,
+            const std::string& name) {
         char* data = new char[2048];
         auto fileStream = streamFactory->open(name);
         fileStream->read(data, fileStream->size());

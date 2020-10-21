@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-using std::string;
 
 enum LogLevel
 {
@@ -14,11 +13,11 @@ enum LogLevel
 class Logger
 {
 public:
-    explicit Logger(const string& tag);
+    explicit Logger(const std::string& tag);
 
-    static Logger create(const string& tag);
-    void logf(const LogLevel level, string message, ...) const;
+    static Logger create(const std::string& tag);
+    void logf(LogLevel level, std::string message, ...) const;
 
 private:
-    const string tag;
+    const std::string tag;
 };

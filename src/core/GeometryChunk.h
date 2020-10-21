@@ -3,9 +3,6 @@
 #include <memory>
 #include <bgfx/bgfx.h>
 
-using std::shared_ptr;
-using std::make_shared;
-
 struct GeometryData {
     uint8_t *data;
     uint32_t size;
@@ -43,7 +40,7 @@ public:
         }
     }
 
-    static shared_ptr<GeometryChunk>    create(
+    static std::shared_ptr<GeometryChunk> create(
             const void *vertices, uint32_t verticesSize,
             uint32_t vertexCount,
             const void *indices, uint32_t indicesSize,
@@ -56,9 +53,9 @@ public:
     }
 
     const bgfx::Memory *getVerticesAsRef() { return bgfx::makeRef(vertices->data, vertices->size); }
-    uint32_t getVertexCount() { return vertexCount; }
+    [[nodiscard]] uint32_t getVertexCount() const { return vertexCount; }
     const bgfx::Memory *getIndicesAsRef() { return bgfx::makeRef(indices->data, indices->size); }
-    uint32_t getIndexCount() { return indexCount; }
+    [[nodiscard]] uint32_t getIndexCount() const { return indexCount; }
 
 private:
     const GeometryData *vertices;
