@@ -10,17 +10,20 @@ public:
     GameConfig()
         : width(640), height(480), title("Game Title") {}
 
-    void withResolution(int32_t width, int32_t height) {
+    GameConfig& withResolution(int32_t width, int32_t height) {
         this->width = width;
         this->height = height;
+        return *this;
     }
 
-    void withTitle(const std::string& title) {
+    GameConfig& withTitle(const std::string& title) {
         this->title = title;
+        return *this;
     }
 
-    void withStreamFactory(std::shared_ptr<StreamFactory> streamFactory) {
+    GameConfig& withStreamFactory(std::shared_ptr<StreamFactory> streamFactory) {
         this->streamFactory = std::move(streamFactory);
+        return *this;
     }
 
 public:
