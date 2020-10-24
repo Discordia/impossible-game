@@ -1,6 +1,8 @@
+#include <thread>
 #include <game/Game.h>
 #include <game/CameraSystem.h>
 #include <game/RenderSystem.h>
+#include <game/FrameTimer.h>
 
 using std::make_unique;
 using std::make_shared;
@@ -25,9 +27,14 @@ int Game::run() {
     gameFactory->create(entityRegistry);
     entityRegistry->init();
 
+    // Timing
+    FrameTimer timer;
+    
     // Poll for events and wait till user closes window
     bool running = true;
     while (running) {
+        timer.frame();
+
         inputHandler->poll();
         running = !inputHandler->exitRequested();
 
