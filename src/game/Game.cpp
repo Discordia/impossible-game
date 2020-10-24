@@ -29,17 +29,17 @@ int Game::run() {
 
     // Timing
     FrameTimer timer;
-    
+
     // Poll for events and wait till user closes window
     bool running = true;
     while (running) {
-        timer.frame();
+        int64_t dt = timer.frame();
 
         inputHandler->poll();
         running = !inputHandler->exitRequested();
 
         renderer->beginFrame();
-        entityRegistry->update(0L);
+        entityRegistry->update(dt);
         renderer->drawFrame();
         renderer->endFrame();
     }
