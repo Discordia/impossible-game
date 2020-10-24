@@ -3,7 +3,7 @@ project(impossible_game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
+include_directories(src deps/entt/src)
 
 file(GLOB SOURCE_FILES src/*.cpp src/impossible/*.cpp src/game/*.cpp src/core/*.cpp src/core/desktop/*.cpp)
 

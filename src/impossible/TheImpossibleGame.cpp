@@ -2,6 +2,6 @@
 
 using std::shared_ptr;
 
-void TheImpossibleGame::create(shared_ptr<EntitySystem> entitySystem) {
+void TheImpossibleGame::create(shared_ptr<EntityRegistry> entitySystem) {
 
 }

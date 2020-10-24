@@ -1,6 +1,7 @@
 #include <game/CameraSystem.h>
 
 using std::make_unique;
+using std::shared_ptr;
 
 CameraSystem::CameraSystem(int32_t width, int32_t height)
     : width(width), height(height) {
@@ -15,6 +16,6 @@ void CameraSystem::init() {
     camera->update();
 }
 
-void CameraSystem::update() {
+void CameraSystem::update(uint64_t dt, shared_ptr<entt::registry> registry) {
 
 }

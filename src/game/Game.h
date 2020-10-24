@@ -6,7 +6,7 @@
 #include <core/Renderer.h>
 #include <game/GameConfig.h>
 #include <game/GameFactory.h>
-#include <game/EntitySystem.h>
+#include <game/EntityRegistry.h>
 
 class RenderChunk;
 
@@ -25,5 +25,5 @@ private:
     std::shared_ptr<RenderQueue> renderQueue;
     std::unique_ptr<Renderer> renderer;
 
-    std::shared_ptr<EntitySystem> entitySystem;
+    std::shared_ptr<EntityRegistry> entityRegistry;
 };

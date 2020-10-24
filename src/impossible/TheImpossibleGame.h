@@ -7,5 +7,5 @@ public:
     TheImpossibleGame() = default;
     ~TheImpossibleGame() override = default;
 
-    void create(std::shared_ptr<EntitySystem> entitySystem) override;
+    void create(std::shared_ptr<EntityRegistry> entitySystem) override;
 };

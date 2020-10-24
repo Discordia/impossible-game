@@ -12,36 +12,27 @@ Game::Game(const GameConfig& config, std::unique_ptr<GameFactory> gameFactory) {
     this->inputHandler = make_unique<InputHandler>();
     this->renderQueue = make_shared<RenderQueue>();
     this->renderer = make_unique<Renderer>(config.getStreamFactory(), renderQueue);
+    this->entityRegistry = make_shared<EntityRegistry>();
 }
 
 int Game::run() {
     window->init();
     renderer->init();
 
-    //
     // setup entity system
-    //
-
-    // camera system
-    CameraSystem cameraSystem(config.getWidth(), config.getHeight());
-    cameraSystem.init();
-
-    // render system
-    RenderSystem renderSystem(renderQueue);
-    renderSystem.init();
-
-    // create game with entity system
-    gameFactory->create(entitySystem);
+    entityRegistry->registerSystem(make_unique<CameraSystem>(config.getWidth(), config.getHeight()));
+    entityRegistry->registerSystem(make_unique<RenderSystem>(renderQueue));
+    gameFactory->create(entityRegistry);
+    entityRegistry->init();
 
     // Poll for events and wait till user closes window
     bool running = true;
-
     while (running) {
         inputHandler->poll();
         running = !inputHandler->exitRequested();
 
         renderer->beginFrame();
-        renderSystem.update();
+        entityRegistry->update(0L);
         renderer->drawFrame();
         renderer->endFrame();
     }

@@ -36,7 +36,7 @@ void RenderSystem::init() {
     this->renderChunk2 = RenderChunk::forGeometry(chunk2);
 }
 
-void RenderSystem::update() {
+void RenderSystem::update(uint64_t dt, std::shared_ptr<entt::registry> registry) {
     renderQueue->push_back(renderChunk1);
     renderQueue->push_back(renderChunk2);
 }

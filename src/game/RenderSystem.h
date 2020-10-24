@@ -1,13 +1,14 @@
 #pragma once
 
 #include <core/RenderQueue.h>
+#include <game/EntitySystem.h>
 
-class RenderSystem {
+class RenderSystem : public EntitySystem {
 public:
     explicit RenderSystem(std::shared_ptr<RenderQueue> renderQueue);
 
-    void init();
-    void update();
+    void init() override;
+    void update(uint64_t dt, std::shared_ptr<entt::registry> registry) override;
 
 private:
     std::shared_ptr<RenderQueue> renderQueue;
