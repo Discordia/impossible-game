@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstdint>
+
 struct PosColorVertex {
     float x;
     float y;

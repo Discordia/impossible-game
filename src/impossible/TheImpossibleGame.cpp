@@ -1,9 +1,8 @@
-#include <impossible/TheImpossibleGame.h>
 #include <core/VertexTypes.h>
 #include <game/EntityRegistry.h>
-#include <game/RenderComponent.h>
+#include <game/GameComponents.h>
+#include <impossible/TheImpossibleGame.h>
 #include <impossible/MovementSystem.h>
-#include <impossible/BaseComponents.h>
 
 using std::shared_ptr;
 using std::make_unique;
@@ -50,5 +49,6 @@ void TheImpossibleGame::create(shared_ptr<EntityRegistry> entityRegistry) {
             cubeVertices2, sizeof(cubeVertices2), 4,
             cubeIndices2, sizeof(cubeIndices2), 6);
     auto renderChunk2 = RenderChunk::forGeometry(chunk2);
+    registry->emplace<PositionComponent>(entity2, -10.0f, -20.0f);
     registry->emplace<RenderComponent>(entity2, renderChunk2);
 }

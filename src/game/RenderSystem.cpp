@@ -1,5 +1,5 @@
 #include <game/RenderSystem.h>
-#include <game/RenderComponent.h>
+#include <game/GameComponents.h>
 
 RenderSystem::RenderSystem(std::shared_ptr<RenderQueue> renderQueue)
     : renderQueue(std::move(renderQueue)) {}

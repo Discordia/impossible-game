@@ -1,5 +1,5 @@
 #include <impossible/MovementSystem.h>
-#include <impossible/BaseComponents.h>
+#include <game/GameComponents.h>
 
 void MovementSystem::init() {
 
