@@ -33,7 +33,7 @@ int Game::run() {
     // Poll for events and wait till user closes window
     bool running = true;
     while (running) {
-        int64_t dt = timer.frame();
+        float_t dt = timer.frame();
 
         inputHandler->poll();
         running = !inputHandler->exitRequested();

@@ -21,7 +21,7 @@ void EntityRegistry::init() {
     }
 }
 
-void EntityRegistry::update(int64_t dt) {
+void EntityRegistry::update(float_t dt) {
     for (const auto &system : systems) {
         system->update(dt, registry);
     }

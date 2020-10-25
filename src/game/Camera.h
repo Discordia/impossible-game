@@ -7,14 +7,7 @@ class Camera {
 public:
     Camera(int32_t width, int32_t height)
         : width(width), height(height) {
-        bx::mtxRotateY(model, 0.0f);
-        model[12] = 0.0f;
-        model[13] = 0.0f;
-        model[14] = 0.0f;
-    }
-
-    void setLookAt(const bx::Vec3& eye, const bx::Vec3& at) {
-        bx::mtxLookAt(view, eye, at);
+        bx::mtxIdentity(model);
     }
 
     void setProjection(float fovy, float near, float far) {
@@ -25,7 +18,19 @@ public:
                     bgfx::getCaps()->homogeneousDepth);
     }
 
+    void setLookAt(const bx::Vec3 &newEye, const bx::Vec3 &newAt, const bx::Vec3 &newUp) {
+        this->eye = newEye;
+        this->at = newAt;
+        this->up = newUp;
+    }
+
+    void translate(float_t dt) {
+        eye.x -= dt * 2;
+        at.x -= dt * 2;
+    }
+
     void update() {
+        bx::mtxLookAt(view, eye, at, up);
         bgfx::setViewTransform(0, view, projection);
         bgfx::setTransform(model);
     }
@@ -33,6 +38,9 @@ public:
 private:
     int32_t width;
     int32_t height;
+    bx::Vec3 eye;
+    bx::Vec3 at;
+    bx::Vec3 up;
     float view[16]{};
     float projection[16]{};
     float model[16]{};

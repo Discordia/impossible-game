@@ -7,7 +7,7 @@ RenderSystem::RenderSystem(std::shared_ptr<RenderQueue> renderQueue)
 void RenderSystem::init() {
 }
 
-void RenderSystem::update(uint64_t dt, std::shared_ptr<entt::registry> registry) {
+void RenderSystem::update(float_t dt, std::shared_ptr<entt::registry> registry) {
     registry->view<RenderComponent>().each([this](auto &renderComponent) {
         renderQueue->push_back(renderComponent.renderChunk);
     });

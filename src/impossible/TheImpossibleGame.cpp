@@ -2,14 +2,17 @@
 #include <core/VertexTypes.h>
 #include <game/EntityRegistry.h>
 #include <game/RenderComponent.h>
+#include <impossible/MovementSystem.h>
+#include <impossible/BaseComponents.h>
 
 using std::shared_ptr;
+using std::make_unique;
 
 static PosColorVertex cubeVertices[] = {
-        {  0.5f,  2.5f, 0.0f, 0xff0000ff },
-        {  0.5f,  1.5f, 0.0f, 0xff0000ff },
-        { -0.5f,  1.5f, 0.0f, 0xff0000ff },
-        { -0.5f,  2.5f, 0.0f, 0xff0000ff }};
+        {  0.5f,   0.5f, -20.0f, 0xff0000ff },
+        {  0.5f,  -0.5f, -20.0f, 0xff0000ff },
+        { -0.5f,  -0.5f, -20.0f, 0xff0000ff },
+        { -0.5f,   0.5f, -20.0f, 0xff0000ff }};
 
 static PosColorVertex cubeVertices2[] = {
         {  1.5f,  -1.5f, 0.0f, 0xff00ff00 },
@@ -25,14 +28,20 @@ static const uint32_t cubeIndices2[] = {
         4,5,7,
         5,6,7};
 
-void TheImpossibleGame::create(shared_ptr<EntityRegistry> entitySystem) {
-    const auto &registry = entitySystem->getRegistry();
+void TheImpossibleGame::create(shared_ptr<EntityRegistry> entityRegistry) {
+    // Create systems
+    entityRegistry->registerSystem(make_unique<MovementSystem>());
+
+    // Create entities
+    const auto &registry = entityRegistry->getRegistry();
 
     auto entity1 = registry->create();
     auto chunk1 = GeometryChunk::create(
             cubeVertices, sizeof(cubeVertices), 4,
             cubeIndices, sizeof(cubeIndices), 6);
     auto renderChunk1 = RenderChunk::forGeometry(chunk1);
+    registry->emplace<PositionComponent>(entity1, 0.0f, 0.0f);
+    registry->emplace<VelocityComponent>(entity1, 2.0f, 2.0f);
     registry->emplace<RenderComponent>(entity1, renderChunk1);
 
 

@@ -1,6 +1,6 @@
 #include <core/Renderer.h>
 #include <core/StreamFactory.h>
-#include <core/Camera.h>
+#include <game/Camera.h>
 
 Renderer::Renderer(std::shared_ptr<StreamFactory> streamFactory, std::shared_ptr<RenderQueue> renderQueue)
         : streamFactory(std::move(streamFactory)), renderQueue(std::move(renderQueue)) {}

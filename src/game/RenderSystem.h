@@ -8,7 +8,7 @@ public:
     explicit RenderSystem(std::shared_ptr<RenderQueue> renderQueue);
 
     void init() override;
-    void update(uint64_t dt, std::shared_ptr<entt::registry> registry) override;
+    void update(float_t dt, std::shared_ptr<entt::registry> registry) override;
 
 private:
     std::shared_ptr<RenderQueue> renderQueue;

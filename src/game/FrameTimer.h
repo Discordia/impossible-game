@@ -4,7 +4,7 @@
 #include <chrono>
 #include <thread>
 
-static const int64_t FRAME_TIME = 1000000 / 60;
+static const float_t FRAME_TIME = 1.0f / 60.0f;
 
 class FrameTimer {
 public:
@@ -13,7 +13,7 @@ public:
         endFrameTime = std::chrono::high_resolution_clock::now();
     }
     
-    int64_t frame() {
+    float_t frame() {
         /*endFrameTime = std::chrono::high_resolution_clock::now();
         auto elapsed_time = std::chrono::duration_cast<std::chrono::microseconds>(endFrameTime - startFrameTime).count();
         std::cout << "Elapsed time: " << elapsed_time << std::endl;
