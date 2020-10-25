@@ -9,7 +9,7 @@ public:
     CameraSystem(int32_t width, int32_t height);
 
     void init() override;
-    void update(float_t dt, std::shared_ptr<entt::registry> registry) override;
+    void update(float_t dt, std::shared_ptr<EntityRegistry> entityRegistry) override;
 
 private:
     int32_t width;

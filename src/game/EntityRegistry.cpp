@@ -1,4 +1,5 @@
 #include <game/EntityRegistry.h>
+#include <game/EntitySystem.h>
 
 using std::shared_ptr;
 using std::make_shared;
@@ -23,6 +24,6 @@ void EntityRegistry::init() {
 
 void EntityRegistry::update(float_t dt) {
     for (const auto &system : systems) {
-        system->update(dt, registry);
+        system->update(dt, shared_from_this());
     }
 }

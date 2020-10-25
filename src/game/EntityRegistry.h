@@ -3,9 +3,10 @@
 #include <memory>
 #include <vector>
 #include <entt/entt.hpp>
-#include <game/EntitySystem.h>
 
-class EntityRegistry {
+class EntitySystem;
+
+class EntityRegistry : public std::enable_shared_from_this<EntityRegistry> {
 public:
     EntityRegistry();
 

@@ -8,7 +8,7 @@ public:
     ~MovementSystem() override = default;
 
     void init() override;
-    void update(float_t dt, std::shared_ptr<entt::registry> registry) override;
+    void update(float_t dt, std::shared_ptr<EntityRegistry> entityRegistry) override;
 
 private:
 

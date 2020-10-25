@@ -7,7 +7,8 @@ RenderSystem::RenderSystem(std::shared_ptr<RenderQueue> renderQueue)
 void RenderSystem::init() {
 }
 
-void RenderSystem::update(float_t dt, std::shared_ptr<entt::registry> registry) {
+void RenderSystem::update(float_t dt, std::shared_ptr<EntityRegistry> entityRegistry) {
+    auto registry = entityRegistry->getRegistry();
     registry->view<RenderComponent>().each([this](auto &renderComponent) {
         renderQueue->push_back(renderComponent.renderChunk);
     });
