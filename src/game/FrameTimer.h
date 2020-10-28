@@ -4,6 +4,8 @@
 #include <chrono>
 #include <thread>
 
+using namespace std::chrono_literals;
+
 class FrameTimer {
 public:
     FrameTimer() {
@@ -11,11 +13,15 @@ public:
         endFrameTime = std::chrono::high_resolution_clock::now();
     }
     
-    float_t frame() {
+    float_t startFrame() {
         endFrameTime = std::chrono::high_resolution_clock::now();
         auto elapsedTime = std::chrono::duration_cast<std::chrono::microseconds>(endFrameTime - startFrameTime).count();
         startFrameTime = endFrameTime;
         return elapsedTime / 1000000.0f;
+    }
+
+    void endFrame() {
+        std::this_thread::sleep_for(1ms);
     }
 
 private:
