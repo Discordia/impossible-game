@@ -1,0 +1,2 @@
+shadercRelease -f v_simple.sc -o v_simple.bin --platform osx --type vertex --verbose -i /Users/robertsjodahl/projecets/bgfx-repos/bgfx/src --varyingdef varying.def.sc -p metal
+shadercRelease -f f_simple.sc -o f_simple.bin --platform osx --type fragment --verbose -i /Users/robertsjodahl/projecets/bgfx-repos/bgfx/src --varyingdef varying.def.sc -p metal

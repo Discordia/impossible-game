@@ -1,8 +1,8 @@
-#include <thread>
 #include <game/Game.h>
 #include <game/CameraSystem.h>
 #include <game/RenderSystem.h>
 #include <game/FrameTimer.h>
+
 
 using std::make_unique;
 using std::make_shared;
@@ -33,7 +33,7 @@ int Game::run() {
     // Poll for events and wait till user closes window
     bool running = true;
     while (running) {
-        float_t dt = timer.startFrame();
+        float dt = timer.startFrame();
 
         inputHandler->poll();
         running = !inputHandler->exitRequested();

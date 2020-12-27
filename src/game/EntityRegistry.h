@@ -14,7 +14,7 @@ public:
     void registerSystem(std::unique_ptr<EntitySystem> entitySystem);
 
     void init();
-    void update(float_t dt);
+    void update(float dt);
 
 private:
     std::shared_ptr<entt::registry> registry;

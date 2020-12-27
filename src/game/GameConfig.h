@@ -5,7 +5,7 @@
 
 class StreamFactory;
 
-class GameConfig {
+class   GameConfig {
 public:
     GameConfig()
         : width(640), height(480), title("Game Title") {}

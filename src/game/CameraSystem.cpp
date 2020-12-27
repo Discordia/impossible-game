@@ -17,7 +17,7 @@ void CameraSystem::init() {
     camera->update();
 }
 
-void CameraSystem::update(float_t dt, std::shared_ptr<EntityRegistry> entityRegistry) {
+void CameraSystem::update(float dt, std::shared_ptr<EntityRegistry> entityRegistry) {
     camera->translate(dt);
     camera->update();
 }

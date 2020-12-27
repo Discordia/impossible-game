@@ -24,7 +24,7 @@ public:
         this->up = newUp;
     }
 
-    void translate(float_t dt) {
+    void translate(float dt) {
         eye.x -= dt * 2;
         at.x -= dt * 2;
     }

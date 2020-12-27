@@ -13,7 +13,7 @@ public:
         endFrameTime = std::chrono::high_resolution_clock::now();
     }
     
-    float_t startFrame() {
+    float startFrame() {
         endFrameTime = std::chrono::high_resolution_clock::now();
         auto elapsedTime = std::chrono::duration_cast<std::chrono::microseconds>(endFrameTime - startFrameTime).count();
         startFrameTime = endFrameTime;

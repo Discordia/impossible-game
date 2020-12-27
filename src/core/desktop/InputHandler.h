@@ -8,9 +8,12 @@ public:
         : quit(false) {}
 
     void poll() {
-        SDL_Event currentEvent;
-        while(SDL_PollEvent(&currentEvent) != 0) {
-            if (currentEvent.type == SDL_QUIT) {
+        SDL_Event event;
+        while(SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
+            if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) {
                 quit = true;
             }
         }

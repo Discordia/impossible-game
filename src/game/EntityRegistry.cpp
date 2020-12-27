@@ -22,7 +22,7 @@ void EntityRegistry::init() {
     }
 }
 
-void EntityRegistry::update(float_t dt) {
+void EntityRegistry::update(float dt) {
     for (const auto &system : systems) {
         system->update(dt, shared_from_this());
     }

@@ -3,13 +3,13 @@
 #include <core/RenderChunk.h>
 
 struct PositionComponent {
-    float_t x;
-    float_t y;
+    float x;
+    float y;
 };
 
 struct VelocityComponent {
-    float_t dx;
-    float_t dy;
+    float dx;
+    float dy;
 };
 
 struct RenderComponent {

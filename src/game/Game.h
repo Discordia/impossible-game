@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include <core/desktop/BGFXWindow.h>
 #include <core/desktop/InputHandler.h>
 #include <core/Renderer.h>

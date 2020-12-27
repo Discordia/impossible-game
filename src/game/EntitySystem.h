@@ -10,5 +10,5 @@ public:
     virtual ~EntitySystem() = default;
 
     virtual void init() = 0;
-    virtual void update(float_t dt, std::shared_ptr<EntityRegistry> entityRegistry) = 0;
+    virtual void update(float dt, std::shared_ptr<EntityRegistry> entityRegistry) = 0;
 };
